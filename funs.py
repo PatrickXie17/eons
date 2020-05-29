@@ -6,14 +6,17 @@ class Eons():
     def __init__(self):
         self
 
-    def l2_loss(self, d1, d2):
+    def l2_loss():
         """
         This function calculate the L2 loss of two arrays
         :param d1: The first np array
         :param d2: The second np array
         :return: MSE
         """
-        return np.mean((np.array(d1) - np.array(d2)) ** 2)
+        def tf(d1, d2):
+            return np.mean((np.array(d1) - np.array(d2)) ** 2)
+
+        return tf
 
     def feed_forward_regression(self, weight, *args):
         """
@@ -35,6 +38,7 @@ class Eons():
         # projection onto weights
         projs = np.dot(X_train, weight)
         projs = projs.reshape(projs.shape[0],1)
+
         # calculate forward loss
         tm = LinearRegression()
         tm.fit(projs, y_train)
